@@ -1,11 +1,8 @@
 /*******************************************************************************
-* FILE: hysteresis.c
 * This code was re-written by Mike Heath from original code obtained indirectly
 * from Michigan State University. heath@csee.usf.edu (Re-written in 1996).
 *******************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "hysteresis.h"
 
 #define VERBOSE 0

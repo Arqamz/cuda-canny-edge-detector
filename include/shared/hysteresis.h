@@ -16,6 +16,9 @@ extern "C" {
 #define POSSIBLE_EDGE 128
 #define EDGE 0
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /*******************************************************************************
 * FUNCTION: follow_edges
 * PURPOSE: This function traces edges along all paths whose magnitude values remain
