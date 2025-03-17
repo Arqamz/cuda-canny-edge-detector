@@ -72,20 +72,36 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    int r, c, pos;
    float *dir_radians = NULL; /* Gradient direction image.                */
 
+   // Variables for timing
+   double start_time, end_time, step_time;
+   double total_time = 0.0;
+
    /****************************************************************************
     * Perform gaussian smoothing on the image using the input standard
     * deviation.
     ****************************************************************************/
    if (VERBOSE)
       printf("Smoothing the image using a gaussian kernel.\n");
+   
+   start_time = get_time_ms();
    gaussian_smooth(image, rows, cols, sigma, &smoothedim);
+   end_time = get_time_ms();
+   step_time = end_time - start_time;
+   total_time += step_time;
+   printf("Gaussian smoothing time: %.2f ms\n", step_time);
 
    /****************************************************************************
     * Compute the first derivative in the x and y directions.
     ****************************************************************************/
    if (VERBOSE)
       printf("Computing the X and Y first derivatives.\n");
+   
+   start_time = get_time_ms();
    derivative_x_y(smoothedim, rows, cols, &delta_x, &delta_y);
+   end_time = get_time_ms();
+   step_time = end_time - start_time;
+   total_time += step_time;
+   printf("X and Y derivatives computation time: %.2f ms\n", step_time);
 
    /****************************************************************************
     * This option to write out the direction of the edge gradient was added
@@ -94,6 +110,7 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
     ****************************************************************************/
    if (fname != NULL)
    {
+      start_time = get_time_ms();
       /*************************************************************************
        * Compute the direction up the gradient, in radians that are
        * specified counteclockwise from the positive x-axis.
@@ -110,6 +127,11 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
       }
       fwrite(dir_radians, sizeof(float), rows * cols, fpdir);
       fclose(fpdir);
+      end_time = get_time_ms();
+      step_time = end_time - start_time;
+      total_time += step_time;
+      printf("Direction calculation time: %.2f ms\n", step_time);
+      
       free(dir_radians);
    }
 
@@ -118,31 +140,52 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
     ****************************************************************************/
    if (VERBOSE)
       printf("Computing the magnitude of the gradient.\n");
+   
+   start_time = get_time_ms();
    magnitude_x_y(delta_x, delta_y, rows, cols, &magnitude);
+   end_time = get_time_ms();
+   step_time = end_time - start_time;
+   total_time += step_time;
+   printf("Gradient magnitude computation time: %.2f ms\n", step_time);
 
    /****************************************************************************
     * Perform non-maximal suppression.
     ****************************************************************************/
    if (VERBOSE)
       printf("Doing the non-maximal suppression.\n");
+   
+   start_time = get_time_ms();
    if ((nms = (unsigned char *)malloc(rows * cols * sizeof(unsigned char))) == NULL)
    {
       fprintf(stderr, "Error allocating the nms image.\n");
       exit(1);
    }
    non_max_supp(magnitude, delta_x, delta_y, rows, cols, nms);
+   end_time = get_time_ms();
+   step_time = end_time - start_time;
+   total_time += step_time;
+   printf("Non-maximal suppression time: %.2f ms\n", step_time);
 
    /****************************************************************************
     * Use hysteresis to mark the edge pixels.
     ****************************************************************************/
    if (VERBOSE)
       printf("Doing hysteresis thresholding.\n");
+   
+   start_time = get_time_ms();
    if ((*edge = (unsigned char *)malloc(rows * cols * sizeof(unsigned char))) == NULL)
    {
       fprintf(stderr, "Error allocating the edge image.\n");
       exit(1);
    }
    apply_hysteresis(magnitude, nms, rows, cols, tlow, thigh, *edge);
+   end_time = get_time_ms();
+   step_time = end_time - start_time;
+   total_time += step_time;
+   printf("Hysteresis thresholding time: %.2f ms\n", step_time);
+
+   // Print total time
+   printf("Total Canny edge detection time: %.2f ms\n", total_time);
 
    /****************************************************************************
     * Free all of the memory that we allocated except for the edge image that

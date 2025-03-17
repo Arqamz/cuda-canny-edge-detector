@@ -10,6 +10,7 @@ extern "C" {
 #include <string.h>
 #include <math.h>
 
+#include "timer.h"
 #include "pgm_io.h"
 #include "hysteresis.h"
 

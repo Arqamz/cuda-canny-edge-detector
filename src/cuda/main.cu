@@ -15,6 +15,9 @@ int main(int argc, char *argv[])
           tlow,                /* Hysteresis low threshold fraction */
           thigh;               /* Hysteresis high threshold fraction */
     char basename[128];        /* Base filename without directory prefix */
+    double start_time, end_time;
+    double read_time, process_time, write_time;
+    double total_time = 0.0;
 
     /***************************************************************************
      * Get the command line arguments.
@@ -57,10 +60,16 @@ int main(int argc, char *argv[])
     * Read in the image. This read function allocates memory for the image.
     ****************************************************************************/
     if (VERBOSE) printf("Reading the image %s.\n", infilename);
+    
+    start_time = get_time_ms();
     if (read_pgm_image(infilename, &image, &rows, &cols) == 0) {
         fprintf(stderr, "Error reading the input image, %s.\n", infilename);
         exit(1);
     }
+    end_time = get_time_ms();
+    read_time = end_time - start_time;
+    total_time += read_time;
+    printf("Image reading time: %.2f ms\n", read_time);
 
     /***************************************************************************
     * Perform the edge detection. All of the work takes place here.
@@ -73,7 +82,12 @@ int main(int argc, char *argv[])
     }
 
     // Call the GPU-enabled canny function (only Gaussian smoothing is offloaded to GPU)
+    start_time = get_time_ms();
     cuda_canny(image, rows, cols, sigma, tlow, thigh, &edge, dirfilename);
+    end_time = get_time_ms();
+    process_time = end_time - start_time;
+    total_time += process_time;
+    printf("CUDA Canny edge detection time: %.2f ms\n", process_time);
 
     /****************************************************************************
      * Write out the edge image to a file.
@@ -81,9 +95,18 @@ int main(int argc, char *argv[])
     sprintf(outfilename, "output/cuda_%s_s_%3.2f_l_%3.2f_h_%3.2f.pgm", basename,
         sigma, tlow, thigh);
     if(VERBOSE) printf("Writing the edge iname in the file %s.\n", outfilename);
+    
+    start_time = get_time_ms();
     if(write_pgm_image(outfilename, edge, rows, cols, "", 255) == 0){
         fprintf(stderr, "Error writing the edge image, %s.\n", outfilename);
         exit(1);
     }
+    end_time = get_time_ms();
+    write_time = end_time - start_time;
+    total_time += write_time;
+    printf("Image writing time: %.2f ms\n", write_time);
+    
+    printf("Total execution time: %.2f ms\n", total_time);
+    
     return 0;
 }
