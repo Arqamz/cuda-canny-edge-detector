@@ -25,7 +25,7 @@ SERIAL_SOURCES = $(wildcard $(SRC_DIR)/serial/*.c) $(wildcard $(SRC_DIR)/shared/
 CUDA_C_SOURCES = $(wildcard $(SRC_DIR)/cuda/*.c) $(wildcard $(SRC_DIR)/shared/*.c)
 CUDA_CU_SOURCES = $(wildcard $(SRC_DIR)/cuda/*.cu)
 
-# Object files (correct pattern substitution)
+# Object files
 SERIAL_OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%.o,$(basename $(SERIAL_SOURCES)))
 CUDA_C_OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%.o,$(basename $(CUDA_C_SOURCES)))
 CUDA_CU_OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%.o,$(basename $(CUDA_CU_SOURCES)))
@@ -58,7 +58,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)/cuda $(OBJ_DIR)/shared
 	$(CC) $(CFLAGS_CUDA) -c $< -o $@
 
 # Compilation rules for CUDA .cu files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cu | $(OBJ_DIR)/cuda
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cu | $(OBJ_DIR)/cuda $(OBJ_DIR)/shared
 	@mkdir -p $(@D)
 	$(NVCC) $(NVCC_FLAGS) -c $< -o $@
 
