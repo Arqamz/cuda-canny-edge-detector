@@ -6,10 +6,6 @@
  * @brief Functions for reading and writing PPM image files
  */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,9 +29,7 @@ extern "C" {
  * @param cols Pointer to variable where the number of columns will be stored
  * @return 1 on success, 0 on failure
  */
-int read_ppm_image(char *infilename, unsigned char **image_red, 
-    unsigned char **image_grn, unsigned char **image_blu, int *rows,
-    int *cols);
+int read_ppm_image(char *infilename, unsigned char **image_red, unsigned char **image_grn, unsigned char **image_blu, int *rows, int *cols);
 
 /**
  * @brief Writes an image in PPM format
@@ -54,12 +48,6 @@ int read_ppm_image(char *infilename, unsigned char **image_red,
  * @param maxval Maximum pixel value (typically 255)
  * @return 1 on success, 0 on failure
  */
-int write_ppm_image(char *outfilename, unsigned char *image_red,
-    unsigned char *image_grn, unsigned char *image_blu, int rows,
-    int cols, char *comment, int maxval);
-
-#ifdef __cplusplus
-}
-#endif
+int write_ppm_image(char *outfilename, unsigned char *image_red, unsigned char *image_grn, unsigned char *image_blu, int rows, int cols, char *comment, int maxval);
 
 #endif /* PPM_IO_H */
