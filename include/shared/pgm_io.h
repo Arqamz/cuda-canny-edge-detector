@@ -6,6 +6,10 @@
 #ifndef PGM_IO_H
 #define PGM_IO_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,5 +33,9 @@ int read_pgm_image(char *infilename, unsigned char **image, int *rows, int *cols
  * outfilename = NULL. A comment can be written to the header if comment != NULL.
  ******************************************************************************/
 int write_pgm_image(char *outfilename, unsigned char *image, int rows, int cols, char *comment, int maxval);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PGM_IO_H */

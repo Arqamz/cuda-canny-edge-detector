@@ -7,6 +7,10 @@
 
 #define HYSTERESIS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Edge status constants */
 #define NOEDGE 255
 #define POSSIBLE_EDGE 128
@@ -58,5 +62,9 @@ void apply_hysteresis(short int *mag, unsigned char *nms, int rows, int cols, fl
  * RETURN: int
  *******************************************************************************/
 int non_max_supp(short *mag, short *gradx, short *grady, int nrows, int ncols, unsigned char *result);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* HYSTERESIS_H */

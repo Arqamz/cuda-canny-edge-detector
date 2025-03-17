@@ -1,6 +1,10 @@
 #ifndef CANNY_EDGE_H
 #define CANNY_EDGE_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,7 +16,7 @@
 typedef long long fixed;
 #define fixeddot 16
 
-#define VERBOSE 0
+#define VERBOSE 1
 #define BOOSTBLURFACTOR 90.0
 
 /**
@@ -105,5 +109,9 @@ void radian_direction(short int *delta_x, short int *delta_y, int rows, int cols
  * @return double Angle in radians (0 to 2π)
  */
 double angle_radians(double x, double y);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CANNY_EDGE_H
