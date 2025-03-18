@@ -2,6 +2,12 @@
 
 #include "cuda_canny_edge.cuh"
 
+void cuda_warmup() {
+    cudaEvent_t event;
+    cudaEventCreate(&event);
+    cudaEventDestroy(event);
+    cudaDeviceSynchronize();
+}
 int main(int argc, char *argv[])
 {
     char *infilename = NULL;   /* Name of the input image */
@@ -72,6 +78,12 @@ int main(int argc, char *argv[])
     printf("Image reading time: %.2f ms\n", read_time);
 
     /***************************************************************************
+    * Warm up CUDA before edge detection
+    ***************************************************************************/
+    if (VERBOSE) printf("Warming up CUDA.\n");
+    cuda_warmup();
+
+    /***************************************************************************
     * Perform the edge detection. All of the work takes place here.
     ***************************************************************************/
     if (VERBOSE) printf("Starting Canny edge detection.\n");
@@ -98,7 +110,7 @@ int main(int argc, char *argv[])
     
     start_time = get_time_ms();
     if(write_pgm_image(outfilename, edge, rows, cols, "", 255) == 0){
-        fprintf(stderr, "Error writing the edge image, %s.\n", outfilename);
+        fprintf(stderr, "ErSror writing the edge image, %s.\n", outfilename);
         exit(1);
     }
     end_time = get_time_ms();
