@@ -1,6 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 
+#define CLOCK_MONOTONIC 1
+
 #include <time.h>
 #include <sys/time.h>
 
