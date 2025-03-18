@@ -385,7 +385,7 @@ void gaussian_smooth(unsigned char *image, int rows, int cols, float sigma, shor
     * Create a 1-dimensional gaussian smoothing kernel.
     ****************************************************************************/
    if (VERBOSE)
-      printf("   Computing the gaussian smoothing kernel.\n");
+      printf("-Computing the gaussian smoothing kernel.\n");
    make_gaussian_kernel(sigma, &kernel, &windowsize);
    center = windowsize / 2;
 
@@ -407,7 +407,7 @@ void gaussian_smooth(unsigned char *image, int rows, int cols, float sigma, shor
     * Blur in the x - direction.
     ****************************************************************************/
    if (VERBOSE)
-      printf("   Bluring the image in the X-direction.\n");
+      printf("-Bluring the image in the X-direction.\n");
    for (r = 0; r < rows; r++)
    {
       for (c = 0; c < cols; c++)
@@ -430,7 +430,7 @@ void gaussian_smooth(unsigned char *image, int rows, int cols, float sigma, shor
     * Blur in the y - direction.
     ****************************************************************************/
    if (VERBOSE)
-      printf("   Bluring the image in the Y-direction.\n");
+      printf("-Bluring the image in the Y-direction.\n");
    for (c = 0; c < cols; c++)
    {
       for (r = 0; r < rows; r++)
@@ -468,7 +468,7 @@ void make_gaussian_kernel(float sigma, float **kernel, int *windowsize)
    center = (*windowsize) / 2;
 
    if (VERBOSE)
-      printf("      The kernel has %d elements.\n", *windowsize);
+      printf("-Kernel of %d elements created.\n", *windowsize);
    if ((*kernel = (float *)malloc((*windowsize) * sizeof(float))) == NULL)
    {
       fprintf(stderr, "Error callocing the gaussian kernel array.\n");
@@ -486,10 +486,10 @@ void make_gaussian_kernel(float sigma, float **kernel, int *windowsize)
    for (i = 0; i < (*windowsize); i++)
       (*kernel)[i] /= sum;
 
-   if (VERBOSE)
-   {
-      printf("The filter coefficients are:\n");
-      for (i = 0; i < (*windowsize); i++)
-         printf("kernel[%d] = %f\n", i, (*kernel)[i]);
-   }
+   // if (VERBOSE)
+   // {
+   //    printf("The filter coefficients are:\n");
+   //    for (i = 0; i < (*windowsize); i++)
+   //       printf("kernel[%d] = %f\n", i, (*kernel)[i]);
+   // }
 }
