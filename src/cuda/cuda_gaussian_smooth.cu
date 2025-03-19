@@ -83,12 +83,9 @@ __global__ void gaussian_smooth_y_kernel(const float *d_temp, short int *d_smoot
 // Function to create Gaussian kernel and call GPU kernels
 void cuda_gaussian_smooth(unsigned char *image, int rows, int cols, float sigma, short int **smoothedim)
 {
-    // Start CPU timer for the entire function
-    double total_start_time = get_time_ms();
     
     cudaError_t cudaStatus;
     cudaEvent_t start, stop;
-    double cpu_start, cpu_end;
     float gpu_time = 0.0f;
 
     // Create CUDA events
@@ -297,6 +294,4 @@ void cuda_gaussian_smooth(unsigned char *image, int rows, int cols, float sigma,
         exit(1);
     }
 
-    double total_end_time = get_time_ms();
-    printf("Total GPU function time: %.2f ms\n", total_end_time - total_start_time);
 }
