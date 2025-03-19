@@ -19,7 +19,7 @@ LDFLAGS = -lm
 CUDA_LDFLAGS = -lm -lcudart
 
 # Input image
-PIC = input/pic_large.pgm
+PIC = input/pic_medium.pgm
 
 # Source files
 SERIAL_SOURCES = $(wildcard $(SRC_DIR)/serial/*.c) $(wildcard $(SRC_DIR)/shared/*.c)
@@ -83,10 +83,10 @@ clean:
 
 # Run targets
 run_serial: $(BIN_DIR)/$(PROJECT_NAME_SERIAL) | $(OUTPUT_DIR)
-	$< $(PIC) 200 0.25 0.5
+	$< $(PIC) 2.5 0.25 0.5
 
 run_cuda: $(BIN_DIR)/$(PROJECT_NAME_CUDA) | $(OUTPUT_DIR)
-	$< $(PIC) 200 0.25 0.5
+	$< $(PIC) 2.5 0.25 0.5
 
 # # Profiling with gprof
 # gprof_serial: CFLAGS_SERIAL += -pg

@@ -1,6 +1,6 @@
 #include "cuda_canny_edge.cuh"
 
-// GPU-accelerated Canny edge detection (currently only Gaussian smoothing on GPU)
+// GPU-accelerated Canny edge detection
 void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
                 float tlow, float thigh, unsigned char **edge, char *fname)
 {

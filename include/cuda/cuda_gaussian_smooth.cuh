@@ -13,7 +13,7 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
-#include "canny_edge.h"
+#include "gaussian_kernel.h"
 
 // Constants for the GPU constant memory
 __constant__ struct {
