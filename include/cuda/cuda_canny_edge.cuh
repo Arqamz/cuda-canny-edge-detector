@@ -14,6 +14,8 @@
 
 #include "cuda_gaussian_smooth.cuh"
 #include "cuda_derivative.cuh"
+#include "cuda_magnitude.cuh"
+#include "cuda_radian.cuh"
 
 // Main function to perform Canny edge detection using CUDA
 void cuda_canny(unsigned char *image, int rows, int cols, float sigma, float tlow, float thigh, unsigned char **edge, char *fname);

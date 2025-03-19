@@ -27,7 +27,9 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
+    printf("==================================\n");
     printf("Gaussian smoothing time: %.2f ms\n", step_time);
+    printf("==================================\n\n");
 
     /****************************************************************************
      * Compute the first derivative in the x and y directions using GPU.
@@ -40,15 +42,17 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
+    printf("==================================\n");
     printf("X and Y derivatives computation time: %.2f ms\n", step_time);
+    printf("==================================\n\n");
 
     /****************************************************************************
-     * Direction calculation for edge quality figure of merit (CPU).
+     * Direction calculation for edge quality figure of merit usng GPU.
      ****************************************************************************/
     if (fname != NULL)
     {
         start_time = get_time_ms();
-        radian_direction(delta_x, delta_y, rows, cols, &dir_radians, -1, -1);
+        cuda_radian_direction(delta_x, delta_y, rows, cols, &dir_radians, -1, -1);
 
         if ((fpdir = fopen(fname, "wb")) == NULL)
         {
@@ -60,23 +64,27 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
         end_time = get_time_ms();
         step_time = end_time - start_time;
         total_time += step_time;
+        printf("==================================\n");
         printf("Direction calculation time: %.2f ms\n", step_time);
+        printf("==================================\n\n");
 
         free(dir_radians);
     }
 
     /****************************************************************************
-     * Compute the magnitude of the gradient (CPU).
+     * Compute the magnitude of the gradient using GPU.
      ****************************************************************************/
     if (VERBOSE)
         printf("Computing the magnitude of the gradient.\n");
 
     start_time = get_time_ms();
-    magnitude_x_y(delta_x, delta_y, rows, cols, &magnitude);
+    cuda_magnitude_x_y(delta_x, delta_y, rows, cols, &magnitude);
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
+    printf("==================================\n");
     printf("Gradient magnitude computation time: %.2f ms\n", step_time);
+    printf("==================================\n\n");
 
     /****************************************************************************
      * Perform non-maximal suppression (CPU).
