@@ -30,13 +30,13 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
     printf("Gaussian smoothing time: %.2f ms\n", step_time);
 
     /****************************************************************************
-     * Compute the first derivative in the x and y directions (CPU).
+     * Compute the first derivative in the x and y directions using GPU.
      ****************************************************************************/
     if (VERBOSE)
         printf("Computing the X and Y first derivatives.\n");
 
     start_time = get_time_ms();
-    derivative_x_y(smoothedim, rows, cols, &delta_x, &delta_y);
+    cuda_derivative_x_y(smoothedim, rows, cols, &delta_x, &delta_y);
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
