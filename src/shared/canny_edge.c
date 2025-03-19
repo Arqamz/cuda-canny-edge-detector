@@ -88,7 +88,9 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    end_time = get_time_ms();
    step_time = end_time - start_time;
    total_time += step_time;
+   printf("==================================\n");
    printf("Gaussian smoothing time: %.2f ms\n", step_time);
+   printf("==================================\n\n");
 
    /****************************************************************************
     * Compute the first derivative in the x and y directions.
@@ -101,7 +103,9 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    end_time = get_time_ms();
    step_time = end_time - start_time;
    total_time += step_time;
+   printf("==================================\n");
    printf("X and Y derivatives computation time: %.2f ms\n", step_time);
+   printf("==================================\n\n");
 
    /****************************************************************************
     * This option to write out the direction of the edge gradient was added
@@ -130,7 +134,9 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
       end_time = get_time_ms();
       step_time = end_time - start_time;
       total_time += step_time;
+      printf("==================================\n");
       printf("Direction calculation time: %.2f ms\n", step_time);
+      printf("==================================\n\n");
       
       free(dir_radians);
    }
@@ -146,7 +152,9 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    end_time = get_time_ms();
    step_time = end_time - start_time;
    total_time += step_time;
+   printf("==================================\n");
    printf("Gradient magnitude computation time: %.2f ms\n", step_time);
+   printf("==================================\n\n");
 
    /****************************************************************************
     * Perform non-maximal suppression.
