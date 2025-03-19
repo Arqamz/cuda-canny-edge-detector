@@ -4,6 +4,7 @@ PROJECT_NAME_CUDA = canny_cuda
 # Directory structure
 BUILD_DIR = build
 BIN_DIR = bin
+OUTPUT_DIR = output
 SRC_DIR = src
 INCLUDE_DIR = include
 OBJ_DIR = $(BUILD_DIR)/obj
@@ -18,7 +19,7 @@ LDFLAGS = -lm
 CUDA_LDFLAGS = -lm -lcudart
 
 # Input image
-PIC = input/pic_tiny.pgm
+PIC = input/pic_large.pgm
 
 # Source files
 SERIAL_SOURCES = $(wildcard $(SRC_DIR)/serial/*.c) $(wildcard $(SRC_DIR)/shared/*.c)
@@ -46,6 +47,9 @@ $(OBJ_DIR)/shared:
 
 $(OBJ_DIR)/cuda:
 	mkdir -p $(OBJ_DIR)/cuda
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
 
 # Compilation rules for serial
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)/serial $(OBJ_DIR)/shared
@@ -75,14 +79,14 @@ $(BIN_DIR)/$(PROJECT_NAME_CUDA): $(CUDA_OBJECTS) | $(BIN_DIR)
 
 # Clean
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+	rm -rf $(BUILD_DIR) $(BIN_DIR) $(OUTPUT_DIR)
 
 # Run targets
-run_serial: $(BIN_DIR)/$(PROJECT_NAME_SERIAL)
-	$< $(PIC) 2.5 0.25 0.5
+run_serial: $(BIN_DIR)/$(PROJECT_NAME_SERIAL) | $(OUTPUT_DIR)
+	$< $(PIC) 200 0.25 0.5
 
-run_cuda: $(BIN_DIR)/$(PROJECT_NAME_CUDA)
-	$< $(PIC) 2.5 0.25 0.5
+run_cuda: $(BIN_DIR)/$(PROJECT_NAME_CUDA) | $(OUTPUT_DIR)
+	$< $(PIC) 200 0.25 0.5
 
 # # Profiling with gprof
 # gprof_serial: CFLAGS_SERIAL += -pg
