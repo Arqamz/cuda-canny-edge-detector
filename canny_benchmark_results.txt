@@ -1,0 +1,3594 @@
+Performance Results
+===================
+Format: algorithm,image,sigma,tlow,thigh,run
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Processing Image: pic_tiny.pgm
+
+%%%%%% Parameters: sigma=4, tlow=0.25, thigh=0.5 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.09 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.50 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.05 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.34 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.07 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1214
+Hysteresis thresholding time: 0.12 ms
+Total Canny edge detection time: 1.35 ms
+CUDA Canny edge detection time: 1.36 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.53 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.57 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.33 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.11 ms
+Doing hysteresis thresholding.
+1214
+Hysteresis thresholding time: 0.13 ms
+Total Canny edge detection time: 1.48 ms
+CUDA Canny edge detection time: 1.49 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.58 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.50 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.05 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.08 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.29 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1214
+Hysteresis thresholding time: 0.12 ms
+Total Canny edge detection time: 1.36 ms
+CUDA Canny edge detection time: 1.36 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.46 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.94 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.13 ms
+Doing hysteresis thresholding.
+920
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 1.28 ms
+Canny edge detection time: 1.28 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.07 ms
+Total execution time: 1.37 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.95 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.08 ms
+Doing hysteresis thresholding.
+920
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 1.24 ms
+Canny edge detection time: 1.25 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.05 ms
+Total execution time: 1.32 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.95 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.13 ms
+Doing hysteresis thresholding.
+920
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 1.30 ms
+Canny edge detection time: 1.30 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.05 ms
+Total execution time: 1.37 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=0.8, tlow=0.2, thigh=0.4 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.04 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.55 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.07 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.10 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.06 ms
+cudaMemcpy delta_y: 0.04 ms
+==================================
+X and Y derivatives computation time: 0.46 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.13 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.04 ms
+Kernel execution: 0.12 ms
+cudaMemcpy DtoH magnitude: 0.04 ms
+==================================
+Gradient magnitude computation time: 0.48 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1222
+Hysteresis thresholding time: 0.25 ms
+Total Canny edge detection time: 1.82 ms
+CUDA Canny edge detection time: 1.82 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.07 ms
+Total execution time: 1.91 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.52 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1222
+Hysteresis thresholding time: 0.13 ms
+Total Canny edge detection time: 1.38 ms
+CUDA Canny edge detection time: 1.39 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.48 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.66 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.97 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1222
+Hysteresis thresholding time: 0.13 ms
+Total Canny edge detection time: 1.83 ms
+CUDA Canny edge detection time: 1.84 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.07 ms
+Total execution time: 1.93 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.38 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.03 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.08 ms
+Doing hysteresis thresholding.
+1616
+Hysteresis thresholding time: 0.15 ms
+Total Canny edge detection time: 0.69 ms
+Canny edge detection time: 0.70 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.06 ms
+Total execution time: 0.78 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.38 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.08 ms
+Doing hysteresis thresholding.
+1616
+Hysteresis thresholding time: 0.15 ms
+Total Canny edge detection time: 0.68 ms
+Canny edge detection time: 0.69 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.06 ms
+Total execution time: 0.76 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 0.36 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+1616
+Hysteresis thresholding time: 0.15 ms
+Total Canny edge detection time: 0.67 ms
+Canny edge detection time: 0.67 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.05 ms
+Total execution time: 0.73 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=10, tlow=0.3, thigh=0.6 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.52 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.36 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.10 ms
+Doing hysteresis thresholding.
+648
+Hysteresis thresholding time: 0.11 ms
+Total Canny edge detection time: 1.37 ms
+CUDA Canny edge detection time: 1.38 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.47 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.04 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.52 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.10 ms
+Doing hysteresis thresholding.
+648
+Hysteresis thresholding time: 0.11 ms
+Total Canny edge detection time: 1.37 ms
+CUDA Canny edge detection time: 1.38 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.08 ms
+Total execution time: 1.47 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.01 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.03 ms
+==================================
+Gaussian smoothing time: 0.51 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.02 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.01 ms
+cudaMemcpy delta_x: 0.03 ms
+cudaMemcpy delta_y: 0.03 ms
+==================================
+X and Y derivatives computation time: 0.35 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.02 ms
+cudaMemcpy HtoD delta_y: 0.02 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.03 ms
+==================================
+Gradient magnitude computation time: 0.30 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+648
+Hysteresis thresholding time: 0.10 ms
+Total Canny edge detection time: 1.36 ms
+CUDA Canny edge detection time: 1.36 ms
+Writing the edge iname in the file output/cuda_pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.07 ms
+Total execution time: 1.45 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 2.22 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.10 ms
+Doing hysteresis thresholding.
+915
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 2.53 ms
+Canny edge detection time: 2.53 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.07 ms
+Total execution time: 2.62 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.02 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 2.24 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+915
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 2.54 ms
+Canny edge detection time: 2.54 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.05 ms
+Total execution time: 2.61 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_tiny.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_tiny.pgm.
+Image reading time: 0.05 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 2.16 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.05 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.09 ms
+Doing hysteresis thresholding.
+915
+Hysteresis thresholding time: 0.14 ms
+Total Canny edge detection time: 2.46 ms
+Canny edge detection time: 2.46 ms
+Writing the edge iname in the file output/pic_tiny.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.05 ms
+Total execution time: 2.56 ms
+-------------------------------------------
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Processing Image: pic_large.pgm
+
+%%%%%% Parameters: sigma=4, tlow=0.25, thigh=0.5 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.94 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.07 ms
+cudaMemcpy to device time: 0.66 ms
+gaussian_smooth_x_kernel execution time: 0.15 ms
+gaussian_smooth_y_kernel execution time: 0.13 ms
+cudaMemcpy from device time: 4.09 ms
+==================================
+Gaussian smoothing time: 6.36 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.07 ms
+cudaMemcpy to device: 1.31 ms
+compute_delta_x_kernel: 3.16 ms
+compute_delta_y_kernel: 0.32 ms
+cudaMemcpy delta_x: 3.87 ms
+cudaMemcpy delta_y: 3.99 ms
+==================================
+X and Y derivatives computation time: 13.90 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.08 ms
+cudaMemcpy HtoD delta_x: 1.39 ms
+cudaMemcpy HtoD delta_y: 1.31 ms
+Kernel execution: 0.23 ms
+cudaMemcpy DtoH magnitude: 3.80 ms
+==================================
+Gradient magnitude computation time: 8.00 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 33.49 ms
+Doing hysteresis thresholding.
+270292
+Hysteresis thresholding time: 22.83 ms
+Total Canny edge detection time: 84.58 ms
+CUDA Canny edge detection time: 86.70 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.75 ms
+Total execution time: 91.40 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.99 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.71 ms
+gaussian_smooth_x_kernel execution time: 0.15 ms
+gaussian_smooth_y_kernel execution time: 0.13 ms
+cudaMemcpy from device time: 4.08 ms
+==================================
+Gaussian smoothing time: 6.40 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.06 ms
+cudaMemcpy to device: 1.24 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.31 ms
+cudaMemcpy delta_x: 3.88 ms
+cudaMemcpy delta_y: 4.07 ms
+==================================
+X and Y derivatives computation time: 13.79 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.30 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.06 ms
+cudaMemcpy HtoD delta_x: 1.24 ms
+cudaMemcpy HtoD delta_y: 1.23 ms
+Kernel execution: 0.23 ms
+cudaMemcpy DtoH magnitude: 3.81 ms
+==================================
+Gradient magnitude computation time: 7.71 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.88 ms
+Doing hysteresis thresholding.
+270292
+Hysteresis thresholding time: 22.59 ms
+Total Canny edge detection time: 83.38 ms
+CUDA Canny edge detection time: 85.55 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.82 ms
+Total execution time: 90.36 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 2.11 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.23 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.68 ms
+gaussian_smooth_x_kernel execution time: 0.15 ms
+gaussian_smooth_y_kernel execution time: 0.13 ms
+cudaMemcpy from device time: 4.11 ms
+==================================
+Gaussian smoothing time: 6.41 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.44 ms
+compute_delta_x_kernel: 3.15 ms
+compute_delta_y_kernel: 0.32 ms
+cudaMemcpy delta_x: 3.90 ms
+cudaMemcpy delta_y: 3.99 ms
+==================================
+X and Y derivatives computation time: 14.02 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 1.25 ms
+cudaMemcpy HtoD delta_y: 1.27 ms
+Kernel execution: 0.14 ms
+cudaMemcpy DtoH magnitude: 3.87 ms
+==================================
+Gradient magnitude computation time: 7.75 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 33.06 ms
+Doing hysteresis thresholding.
+270292
+Hysteresis thresholding time: 22.63 ms
+Total Canny edge detection time: 83.87 ms
+CUDA Canny edge detection time: 85.97 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.74 ms
+Total execution time: 90.83 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 2.04 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 371.24 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 42.69 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.55 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.19 ms
+Doing hysteresis thresholding.
+271599
+Hysteresis thresholding time: 23.70 ms
+Total Canny edge detection time: 482.37 ms
+Canny edge detection time: 482.87 ms
+Writing the edge iname in the file output/pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.59 ms
+Total execution time: 487.50 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.85 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 384.92 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 43.81 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.52 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.85 ms
+Doing hysteresis thresholding.
+271599
+Hysteresis thresholding time: 23.68 ms
+Total Canny edge detection time: 497.78 ms
+Canny edge detection time: 498.27 ms
+Writing the edge iname in the file output/pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.70 ms
+Total execution time: 502.82 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.94 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 375.18 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 44.23 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.89 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.99 ms
+Doing hysteresis thresholding.
+271599
+Hysteresis thresholding time: 23.90 ms
+Total Canny edge detection time: 489.19 ms
+Canny edge detection time: 489.69 ms
+Writing the edge iname in the file output/pic_large.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 2.62 ms
+Total execution time: 494.26 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=0.8, tlow=0.2, thigh=0.4 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.83 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.67 ms
+gaussian_smooth_x_kernel execution time: 0.12 ms
+gaussian_smooth_y_kernel execution time: 0.11 ms
+cudaMemcpy from device time: 3.86 ms
+==================================
+Gaussian smoothing time: 6.08 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.25 ms
+compute_delta_x_kernel: 3.48 ms
+compute_delta_y_kernel: 0.32 ms
+cudaMemcpy delta_x: 3.76 ms
+cudaMemcpy delta_y: 3.73 ms
+==================================
+X and Y derivatives computation time: 13.78 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.06 ms
+cudaMemcpy HtoD delta_x: 1.24 ms
+cudaMemcpy HtoD delta_y: 1.25 ms
+Kernel execution: 0.14 ms
+cudaMemcpy DtoH magnitude: 4.14 ms
+==================================
+Gradient magnitude computation time: 8.02 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 45.45 ms
+Doing hysteresis thresholding.
+953539
+Hysteresis thresholding time: 45.42 ms
+Total Canny edge detection time: 118.74 ms
+CUDA Canny edge detection time: 120.84 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.77 ms
+Total execution time: 125.45 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.90 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.67 ms
+gaussian_smooth_x_kernel execution time: 0.12 ms
+gaussian_smooth_y_kernel execution time: 0.11 ms
+cudaMemcpy from device time: 3.96 ms
+==================================
+Gaussian smoothing time: 6.16 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.25 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.31 ms
+cudaMemcpy delta_x: 3.77 ms
+cudaMemcpy delta_y: 3.85 ms
+==================================
+X and Y derivatives computation time: 13.43 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 1.24 ms
+cudaMemcpy HtoD delta_y: 1.24 ms
+Kernel execution: 0.13 ms
+cudaMemcpy DtoH magnitude: 3.70 ms
+==================================
+Gradient magnitude computation time: 7.50 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 45.53 ms
+Doing hysteresis thresholding.
+953539
+Hysteresis thresholding time: 44.94 ms
+Total Canny edge detection time: 117.56 ms
+CUDA Canny edge detection time: 119.65 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.75 ms
+Total execution time: 124.31 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 2.07 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.67 ms
+gaussian_smooth_x_kernel execution time: 0.12 ms
+gaussian_smooth_y_kernel execution time: 0.11 ms
+cudaMemcpy from device time: 4.04 ms
+==================================
+Gaussian smoothing time: 6.26 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.06 ms
+cudaMemcpy to device: 1.24 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.32 ms
+cudaMemcpy delta_x: 3.75 ms
+cudaMemcpy delta_y: 3.70 ms
+==================================
+X and Y derivatives computation time: 13.30 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.06 ms
+cudaMemcpy HtoD delta_x: 1.25 ms
+cudaMemcpy HtoD delta_y: 1.25 ms
+Kernel execution: 0.13 ms
+cudaMemcpy DtoH magnitude: 3.71 ms
+==================================
+Gradient magnitude computation time: 7.55 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 45.67 ms
+Doing hysteresis thresholding.
+953539
+Hysteresis thresholding time: 44.97 ms
+Total Canny edge detection time: 117.76 ms
+CUDA Canny edge detection time: 119.87 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.74 ms
+Total execution time: 124.68 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.92 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 149.77 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 43.74 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.64 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 45.72 ms
+Doing hysteresis thresholding.
+951067
+Hysteresis thresholding time: 47.17 ms
+Total Canny edge detection time: 299.03 ms
+Canny edge detection time: 299.53 ms
+Writing the edge iname in the file output/pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.81 ms
+Total execution time: 304.26 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 2.14 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 242.19 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 43.91 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.87 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 45.06 ms
+Doing hysteresis thresholding.
+951067
+Hysteresis thresholding time: 46.52 ms
+Total Canny edge detection time: 390.55 ms
+Canny edge detection time: 390.97 ms
+Writing the edge iname in the file output/pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.78 ms
+Total execution time: 395.89 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.77 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 239.65 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 44.04 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.53 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 44.88 ms
+Doing hysteresis thresholding.
+951067
+Hysteresis thresholding time: 46.22 ms
+Total Canny edge detection time: 387.32 ms
+Canny edge detection time: 387.74 ms
+Writing the edge iname in the file output/pic_large.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 2.74 ms
+Total execution time: 392.25 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=10, tlow=0.3, thigh=0.6 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.77 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.06 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.71 ms
+gaussian_smooth_x_kernel execution time: 0.24 ms
+gaussian_smooth_y_kernel execution time: 0.22 ms
+cudaMemcpy from device time: 3.67 ms
+==================================
+Gaussian smoothing time: 6.15 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.25 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.31 ms
+cudaMemcpy delta_x: 3.67 ms
+cudaMemcpy delta_y: 3.65 ms
+==================================
+X and Y derivatives computation time: 13.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 1.25 ms
+cudaMemcpy HtoD delta_y: 1.23 ms
+Kernel execution: 0.13 ms
+cudaMemcpy DtoH magnitude: 3.64 ms
+==================================
+Gradient magnitude computation time: 7.44 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.78 ms
+Doing hysteresis thresholding.
+179566
+Hysteresis thresholding time: 20.10 ms
+Total Canny edge detection time: 79.63 ms
+CUDA Canny edge detection time: 81.39 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.70 ms
+Total execution time: 85.86 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.85 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.68 ms
+gaussian_smooth_x_kernel execution time: 0.24 ms
+gaussian_smooth_y_kernel execution time: 0.22 ms
+cudaMemcpy from device time: 3.77 ms
+==================================
+Gaussian smoothing time: 6.22 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.24 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.31 ms
+cudaMemcpy delta_x: 3.73 ms
+cudaMemcpy delta_y: 3.70 ms
+==================================
+X and Y derivatives computation time: 13.25 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 1.27 ms
+cudaMemcpy HtoD delta_y: 1.25 ms
+Kernel execution: 0.13 ms
+cudaMemcpy DtoH magnitude: 3.78 ms
+==================================
+Gradient magnitude computation time: 7.64 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.91 ms
+Doing hysteresis thresholding.
+179566
+Hysteresis thresholding time: 19.91 ms
+Total Canny edge detection time: 79.93 ms
+CUDA Canny edge detection time: 82.01 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.68 ms
+Total execution time: 86.54 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 2.00 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.66 ms
+gaussian_smooth_x_kernel execution time: 0.24 ms
+gaussian_smooth_y_kernel execution time: 0.22 ms
+cudaMemcpy from device time: 3.75 ms
+==================================
+Gaussian smoothing time: 6.18 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.31 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMemcpy to device: 1.24 ms
+compute_delta_x_kernel: 3.05 ms
+compute_delta_y_kernel: 0.32 ms
+cudaMemcpy delta_x: 3.67 ms
+cudaMemcpy delta_y: 3.68 ms
+==================================
+X and Y derivatives computation time: 13.17 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.31 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 1.28 ms
+cudaMemcpy HtoD delta_y: 1.23 ms
+Kernel execution: 0.13 ms
+cudaMemcpy DtoH magnitude: 3.68 ms
+==================================
+Gradient magnitude computation time: 7.52 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 32.71 ms
+Doing hysteresis thresholding.
+179566
+Hysteresis thresholding time: 20.04 ms
+Total Canny edge detection time: 79.62 ms
+CUDA Canny edge detection time: 81.71 ms
+Writing the edge iname in the file output/cuda_pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.67 ms
+Total execution time: 86.38 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.82 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 679.03 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 43.82 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.63 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 33.24 ms
+Doing hysteresis thresholding.
+184213
+Hysteresis thresholding time: 21.67 ms
+Total Canny edge detection time: 790.38 ms
+Canny edge detection time: 790.88 ms
+Writing the edge iname in the file output/pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.66 ms
+Total execution time: 795.36 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.98 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 673.10 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 42.92 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.50 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 33.40 ms
+Doing hysteresis thresholding.
+184213
+Hysteresis thresholding time: 21.79 ms
+Total Canny edge detection time: 783.71 ms
+Canny edge detection time: 784.13 ms
+Writing the edge iname in the file output/pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.61 ms
+Total execution time: 788.72 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_large.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_large.pgm.
+Image reading time: 1.86 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 744.78 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 44.13 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 12.66 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 33.38 ms
+Doing hysteresis thresholding.
+184213
+Hysteresis thresholding time: 21.56 ms
+Total Canny edge detection time: 856.52 ms
+Canny edge detection time: 857.02 ms
+Writing the edge iname in the file output/pic_large.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 2.76 ms
+Total execution time: 861.63 ms
+-------------------------------------------
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Processing Image: pic_medium.pgm
+
+%%%%%% Parameters: sigma=4, tlow=0.25, thigh=0.5 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.47 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.04 ms
+cudaMemcpy to device time: 0.22 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.05 ms
+cudaMemcpy from device time: 1.09 ms
+==================================
+Gaussian smoothing time: 2.19 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.04 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.37 ms
+compute_delta_x_kernel: 0.36 ms
+compute_delta_y_kernel: 0.10 ms
+cudaMemcpy delta_x: 1.09 ms
+cudaMemcpy delta_y: 1.07 ms
+==================================
+X and Y derivatives computation time: 3.57 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.38 ms
+cudaMemcpy HtoD delta_y: 0.38 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.09 ms
+==================================
+Gradient magnitude computation time: 2.49 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.57 ms
+Doing hysteresis thresholding.
+72900
+Hysteresis thresholding time: 5.75 ms
+Total Canny edge detection time: 22.56 ms
+CUDA Canny edge detection time: 22.99 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.74 ms
+Total execution time: 24.20 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.53 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.23 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.05 ms
+cudaMemcpy from device time: 1.12 ms
+==================================
+Gaussian smoothing time: 2.23 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.37 ms
+compute_delta_x_kernel: 0.37 ms
+compute_delta_y_kernel: 0.09 ms
+cudaMemcpy delta_x: 1.11 ms
+cudaMemcpy delta_y: 1.09 ms
+==================================
+X and Y derivatives computation time: 3.60 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.38 ms
+cudaMemcpy HtoD delta_y: 0.37 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.10 ms
+==================================
+Gradient magnitude computation time: 2.50 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.60 ms
+Doing hysteresis thresholding.
+72900
+Hysteresis thresholding time: 5.63 ms
+Total Canny edge detection time: 22.56 ms
+CUDA Canny edge detection time: 23.06 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.71 ms
+Total execution time: 24.30 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.53 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.04 ms
+cudaMemcpy to device time: 0.23 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.05 ms
+cudaMemcpy from device time: 1.12 ms
+==================================
+Gaussian smoothing time: 2.25 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.37 ms
+compute_delta_x_kernel: 0.37 ms
+compute_delta_y_kernel: 0.10 ms
+cudaMemcpy delta_x: 1.11 ms
+cudaMemcpy delta_y: 1.10 ms
+==================================
+X and Y derivatives computation time: 3.64 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.40 ms
+cudaMemcpy HtoD delta_y: 0.42 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.12 ms
+==================================
+Gradient magnitude computation time: 2.60 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.63 ms
+Doing hysteresis thresholding.
+72900
+Hysteresis thresholding time: 5.76 ms
+Total Canny edge detection time: 22.89 ms
+CUDA Canny edge detection time: 23.41 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.76 ms
+Total execution time: 24.70 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.48 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 79.64 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.65 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.12 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.52 ms
+Doing hysteresis thresholding.
+73427
+Hysteresis thresholding time: 6.01 ms
+Total Canny edge detection time: 101.94 ms
+Canny edge detection time: 102.06 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.74 ms
+Total execution time: 103.29 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.46 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 76.52 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.18 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.18 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.38 ms
+Doing hysteresis thresholding.
+73427
+Hysteresis thresholding time: 5.91 ms
+Total Canny edge detection time: 98.17 ms
+Canny edge detection time: 98.29 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.73 ms
+Total execution time: 99.48 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.50 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 75.38 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 3.95 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.10 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.41 ms
+Doing hysteresis thresholding.
+73427
+Hysteresis thresholding time: 6.02 ms
+Total Canny edge detection time: 96.86 ms
+Canny edge detection time: 96.98 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.72 ms
+Total execution time: 98.20 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=0.8, tlow=0.2, thigh=0.4 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.46 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.23 ms
+cudaMalloc d_image time: 0.11 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.04 ms
+cudaMemcpy to device time: 0.22 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.04 ms
+cudaMemcpy from device time: 1.11 ms
+==================================
+Gaussian smoothing time: 2.27 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.11 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.38 ms
+compute_delta_x_kernel: 0.36 ms
+compute_delta_y_kernel: 0.10 ms
+cudaMemcpy delta_x: 1.08 ms
+cudaMemcpy delta_y: 1.05 ms
+==================================
+X and Y derivatives computation time: 3.54 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMalloc d_magnitude: 0.04 ms
+cudaMemcpy HtoD delta_x: 0.38 ms
+cudaMemcpy HtoD delta_y: 0.38 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.05 ms
+==================================
+Gradient magnitude computation time: 2.45 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 11.21 ms
+Doing hysteresis thresholding.
+203107
+Hysteresis thresholding time: 9.94 ms
+Total Canny edge detection time: 29.42 ms
+CUDA Canny edge detection time: 29.85 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.73 ms
+Total execution time: 31.03 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.54 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.26 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.04 ms
+cudaMemcpy from device time: 1.12 ms
+==================================
+Gaussian smoothing time: 2.27 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.04 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.38 ms
+compute_delta_x_kernel: 0.37 ms
+compute_delta_y_kernel: 0.09 ms
+cudaMemcpy delta_x: 1.08 ms
+cudaMemcpy delta_y: 1.07 ms
+==================================
+X and Y derivatives computation time: 3.56 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.38 ms
+cudaMemcpy HtoD delta_y: 0.38 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.16 ms
+==================================
+Gradient magnitude computation time: 2.57 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 10.88 ms
+Doing hysteresis thresholding.
+203107
+Hysteresis thresholding time: 10.12 ms
+Total Canny edge detection time: 29.41 ms
+CUDA Canny edge detection time: 29.88 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.73 ms
+Total execution time: 31.14 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.55 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.40 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.04 ms
+cudaMemcpy to device time: 0.24 ms
+gaussian_smooth_x_kernel execution time: 0.06 ms
+gaussian_smooth_y_kernel execution time: 0.04 ms
+cudaMemcpy from device time: 1.18 ms
+==================================
+Gaussian smoothing time: 2.51 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.04 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.41 ms
+compute_delta_x_kernel: 0.37 ms
+compute_delta_y_kernel: 0.09 ms
+cudaMemcpy delta_x: 1.14 ms
+cudaMemcpy delta_y: 1.20 ms
+==================================
+X and Y derivatives computation time: 3.79 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.38 ms
+cudaMemcpy HtoD delta_y: 0.37 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.09 ms
+==================================
+Gradient magnitude computation time: 2.49 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 10.93 ms
+Doing hysteresis thresholding.
+203107
+Hysteresis thresholding time: 10.20 ms
+Total Canny edge detection time: 29.92 ms
+CUDA Canny edge detection time: 30.42 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.73 ms
+Total execution time: 31.69 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.55 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 35.28 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 5.08 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.15 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 10.66 ms
+Doing hysteresis thresholding.
+202907
+Hysteresis thresholding time: 10.44 ms
+Total Canny edge detection time: 64.60 ms
+Canny edge detection time: 64.75 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.78 ms
+Total execution time: 66.08 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.57 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 34.35 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.57 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.25 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 10.94 ms
+Doing hysteresis thresholding.
+202907
+Hysteresis thresholding time: 10.70 ms
+Total Canny edge detection time: 63.81 ms
+Canny edge detection time: 63.97 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.76 ms
+Total execution time: 65.30 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.52 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 34.02 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.46 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.28 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 10.67 ms
+Doing hysteresis thresholding.
+202907
+Hysteresis thresholding time: 10.70 ms
+Total Canny edge detection time: 63.13 ms
+Canny edge detection time: 63.28 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.75 ms
+Total execution time: 64.55 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=10, tlow=0.3, thigh=0.6 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.52 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.04 ms
+cudaMemcpy to device time: 0.22 ms
+gaussian_smooth_x_kernel execution time: 0.09 ms
+gaussian_smooth_y_kernel execution time: 0.07 ms
+cudaMemcpy from device time: 1.10 ms
+==================================
+Gaussian smoothing time: 2.26 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.37 ms
+compute_delta_x_kernel: 0.36 ms
+compute_delta_y_kernel: 0.09 ms
+cudaMemcpy delta_x: 1.09 ms
+cudaMemcpy delta_y: 1.20 ms
+==================================
+X and Y derivatives computation time: 3.72 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.11 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.40 ms
+cudaMemcpy HtoD delta_y: 0.40 ms
+Kernel execution: 0.18 ms
+cudaMemcpy DtoH magnitude: 1.16 ms
+==================================
+Gradient magnitude computation time: 2.72 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.98 ms
+Doing hysteresis thresholding.
+63586
+Hysteresis thresholding time: 5.88 ms
+Total Canny edge detection time: 23.56 ms
+CUDA Canny edge detection time: 24.11 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.96 ms
+Total execution time: 25.59 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.52 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.41 ms
+cudaMalloc d_image time: 0.00 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.24 ms
+gaussian_smooth_x_kernel execution time: 0.09 ms
+gaussian_smooth_y_kernel execution time: 0.07 ms
+cudaMemcpy from device time: 1.11 ms
+==================================
+Gaussian smoothing time: 2.74 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.42 ms
+compute_delta_x_kernel: 0.39 ms
+compute_delta_y_kernel: 0.10 ms
+cudaMemcpy delta_x: 1.17 ms
+cudaMemcpy delta_y: 1.14 ms
+==================================
+X and Y derivatives computation time: 3.79 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.10 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.37 ms
+cudaMemcpy HtoD delta_y: 0.37 ms
+Kernel execution: 0.09 ms
+cudaMemcpy DtoH magnitude: 1.11 ms
+==================================
+Gradient magnitude computation time: 2.50 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 9.08 ms
+Doing hysteresis thresholding.
+63586
+Hysteresis thresholding time: 6.36 ms
+Total Canny edge detection time: 24.48 ms
+CUDA Canny edge detection time: 24.98 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.73 ms
+Total execution time: 26.23 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.58 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.05 ms
+cudaMalloc d_smoothed time: 0.05 ms
+cudaMemcpy to device time: 0.22 ms
+gaussian_smooth_x_kernel execution time: 0.09 ms
+gaussian_smooth_y_kernel execution time: 0.07 ms
+cudaMemcpy from device time: 1.17 ms
+==================================
+Gaussian smoothing time: 2.35 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.10 ms
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.04 ms
+cudaMemcpy to device: 0.37 ms
+compute_delta_x_kernel: 0.37 ms
+compute_delta_y_kernel: 0.10 ms
+cudaMemcpy delta_x: 1.19 ms
+cudaMemcpy delta_y: 1.18 ms
+==================================
+X and Y derivatives computation time: 3.78 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.09 ms
+cudaMalloc d_delta_y: 0.05 ms
+cudaMalloc d_magnitude: 0.05 ms
+cudaMemcpy HtoD delta_x: 0.37 ms
+cudaMemcpy HtoD delta_y: 0.37 ms
+Kernel execution: 0.10 ms
+cudaMemcpy DtoH magnitude: 1.22 ms
+==================================
+Gradient magnitude computation time: 2.64 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 9.15 ms
+Doing hysteresis thresholding.
+63586
+Hysteresis thresholding time: 5.98 ms
+Total Canny edge detection time: 23.90 ms
+CUDA Canny edge detection time: 24.40 ms
+Writing the edge iname in the file output/cuda_pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.84 ms
+Total execution time: 25.82 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.52 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 161.34 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.09 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.17 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 9.02 ms
+Doing hysteresis thresholding.
+70712
+Hysteresis thresholding time: 6.30 ms
+Total Canny edge detection time: 183.92 ms
+Canny edge detection time: 184.06 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.73 ms
+Total execution time: 185.31 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.52 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 160.40 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.71 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.12 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 9.05 ms
+Doing hysteresis thresholding.
+70712
+Hysteresis thresholding time: 6.29 ms
+Total Canny edge detection time: 183.57 ms
+Canny edge detection time: 183.71 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.72 ms
+Total execution time: 184.95 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_medium.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_medium.pgm.
+Image reading time: 0.47 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 161.75 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 4.30 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 3.08 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 8.84 ms
+Doing hysteresis thresholding.
+70712
+Hysteresis thresholding time: 6.32 ms
+Total Canny edge detection time: 184.29 ms
+Canny edge detection time: 184.44 ms
+Writing the edge iname in the file output/pic_medium.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.71 ms
+Total execution time: 185.62 ms
+-------------------------------------------
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Processing Image: pic_small.pgm
+
+%%%%%% Parameters: sigma=4, tlow=0.25, thigh=0.5 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.57 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.09 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.07 ms
+cudaMemcpy delta_y: 0.07 ms
+==================================
+X and Y derivatives computation time: 0.50 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.07 ms
+==================================
+Gradient magnitude computation time: 0.37 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.45 ms
+Doing hysteresis thresholding.
+4331
+Hysteresis thresholding time: 0.33 ms
+Total Canny edge detection time: 2.23 ms
+CUDA Canny edge detection time: 2.23 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.10 ms
+Total execution time: 2.37 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.06 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.07 ms
+==================================
+Gaussian smoothing time: 0.55 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.05 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.07 ms
+cudaMemcpy delta_y: 0.07 ms
+==================================
+X and Y derivatives computation time: 0.46 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.05 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.37 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.41 ms
+Doing hysteresis thresholding.
+4331
+Hysteresis thresholding time: 0.37 ms
+Total Canny edge detection time: 2.17 ms
+CUDA Canny edge detection time: 2.18 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.10 ms
+Total execution time: 2.32 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.07 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 21 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.57 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.05 ms
+cudaMalloc d_delta_x: 0.01 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.07 ms
+cudaMemcpy delta_y: 0.08 ms
+==================================
+X and Y derivatives computation time: 0.47 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.07 ms
+==================================
+Gradient magnitude computation time: 0.38 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.42 ms
+Doing hysteresis thresholding.
+4331
+Hysteresis thresholding time: 0.35 ms
+Total Canny edge detection time: 2.19 ms
+CUDA Canny edge detection time: 2.20 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.10 ms
+Total execution time: 2.37 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 3.42 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.43 ms
+Doing hysteresis thresholding.
+4237
+Hysteresis thresholding time: 0.38 ms
+Total Canny edge detection time: 4.53 ms
+Canny edge detection time: 4.55 ms
+Writing the edge iname in the file output/pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.10 ms
+Total execution time: 4.68 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 3.33 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.43 ms
+Doing hysteresis thresholding.
+4237
+Hysteresis thresholding time: 0.38 ms
+Total Canny edge detection time: 4.45 ms
+Canny edge detection time: 4.46 ms
+Writing the edge iname in the file output/pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.09 ms
+Total execution time: 4.59 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=4, tlow=0.25, thigh=0.5 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 21 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 3.28 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.17 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.43 ms
+Doing hysteresis thresholding.
+4237
+Hysteresis thresholding time: 0.39 ms
+Total Canny edge detection time: 4.41 ms
+Canny edge detection time: 4.42 ms
+Writing the edge iname in the file output/pic_small.pgm_s_4.00_l_0.25_h_0.50.pgm.
+Image writing time: 0.07 ms
+Total execution time: 4.53 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=0.8, tlow=0.2, thigh=0.4 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.59 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.08 ms
+cudaMemcpy delta_y: 0.07 ms
+==================================
+X and Y derivatives computation time: 0.48 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.07 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.40 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.76 ms
+Doing hysteresis thresholding.
+16666
+Hysteresis thresholding time: 0.82 ms
+Total Canny edge detection time: 3.05 ms
+CUDA Canny edge detection time: 3.05 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.11 ms
+Total execution time: 3.20 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.04 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.60 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.04 ms
+compute_delta_x_kernel: 0.10 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.08 ms
+cudaMemcpy delta_y: 0.08 ms
+==================================
+X and Y derivatives computation time: 0.50 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.04 ms
+cudaMemcpy HtoD delta_y: 0.04 ms
+Kernel execution: 0.16 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.50 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.76 ms
+Doing hysteresis thresholding.
+16666
+Hysteresis thresholding time: 0.84 ms
+Total Canny edge detection time: 3.20 ms
+CUDA Canny edge detection time: 3.20 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.11 ms
+Total execution time: 3.35 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 7 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.57 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.07 ms
+cudaMalloc d_delta_x: 0.01 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.04 ms
+compute_delta_x_kernel: 0.10 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.10 ms
+cudaMemcpy delta_y: 0.09 ms
+==================================
+X and Y derivatives computation time: 0.54 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.04 ms
+cudaMemcpy HtoD delta_y: 0.04 ms
+Kernel execution: 0.17 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.52 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.76 ms
+Doing hysteresis thresholding.
+16666
+Hysteresis thresholding time: 0.83 ms
+Total Canny edge detection time: 3.23 ms
+CUDA Canny edge detection time: 3.24 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.11 ms
+Total execution time: 3.38 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 1.34 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.19 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.74 ms
+Doing hysteresis thresholding.
+16760
+Hysteresis thresholding time: 0.86 ms
+Total Canny edge detection time: 3.29 ms
+Canny edge detection time: 3.31 ms
+Writing the edge iname in the file output/pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.09 ms
+Total execution time: 3.44 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 1.30 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.74 ms
+Doing hysteresis thresholding.
+16760
+Hysteresis thresholding time: 0.86 ms
+Total Canny edge detection time: 3.21 ms
+Canny edge detection time: 3.22 ms
+Writing the edge iname in the file output/pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.07 ms
+Total execution time: 3.33 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=0.8, tlow=0.2, thigh=0.4 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 7 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 1.33 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.14 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.17 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.74 ms
+Doing hysteresis thresholding.
+16760
+Hysteresis thresholding time: 0.87 ms
+Total Canny edge detection time: 3.25 ms
+Canny edge detection time: 3.26 ms
+Writing the edge iname in the file output/pic_small.pgm_s_0.80_l_0.20_h_0.40.pgm.
+Image writing time: 0.07 ms
+Total execution time: 3.36 ms
+-------------------------------------------
+
+
+%%%%%% Parameters: sigma=10, tlow=0.3, thigh=0.6 %%%%%%
+
+%%%%%% Algorithm: bin/canny_cuda %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.21 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.59 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.05 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.07 ms
+cudaMemcpy delta_y: 0.08 ms
+==================================
+X and Y derivatives computation time: 0.47 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.07 ms
+==================================
+Gradient magnitude computation time: 0.38 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.36 ms
+Doing hysteresis thresholding.
+1603
+Hysteresis thresholding time: 0.26 ms
+Total Canny edge detection time: 2.07 ms
+CUDA Canny edge detection time: 2.07 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.10 ms
+Total execution time: 2.21 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.20 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.03 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.58 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.10 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.07 ms
+cudaMemcpy delta_y: 0.08 ms
+==================================
+X and Y derivatives computation time: 0.48 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.04 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.40 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.36 ms
+Doing hysteresis thresholding.
+1603
+Hysteresis thresholding time: 0.26 ms
+Total Canny edge detection time: 2.08 ms
+CUDA Canny edge detection time: 2.08 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.10 ms
+Total execution time: 2.22 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Warming up CUDA.
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel on GPU.
+-Kernel of 51 elements created.
+cudaMemcpyToSymbol time: 0.22 ms
+cudaMalloc d_image time: 0.07 ms
+cudaMalloc d_temp time: 0.00 ms
+cudaMalloc d_smoothed time: 0.00 ms
+cudaMemcpy to device time: 0.02 ms
+gaussian_smooth_x_kernel execution time: 0.03 ms
+gaussian_smooth_y_kernel execution time: 0.02 ms
+cudaMemcpy from device time: 0.08 ms
+==================================
+Gaussian smoothing time: 0.58 ms
+==================================
+
+Computing the X and Y first derivatives.
+cudaMalloc d_smoothed: 0.06 ms
+cudaMalloc d_delta_x: 0.00 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMemcpy to device: 0.03 ms
+compute_delta_x_kernel: 0.09 ms
+compute_delta_y_kernel: 0.02 ms
+cudaMemcpy delta_x: 0.08 ms
+cudaMemcpy delta_y: 0.07 ms
+==================================
+X and Y derivatives computation time: 0.47 ms
+==================================
+
+Computing the magnitude of the gradient.
+cudaMalloc d_delta_x: 0.06 ms
+cudaMalloc d_delta_y: 0.00 ms
+cudaMalloc d_magnitude: 0.00 ms
+cudaMemcpy HtoD delta_x: 0.03 ms
+cudaMemcpy HtoD delta_y: 0.03 ms
+Kernel execution: 0.07 ms
+cudaMemcpy DtoH magnitude: 0.08 ms
+==================================
+Gradient magnitude computation time: 0.39 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.36 ms
+Doing hysteresis thresholding.
+1603
+Hysteresis thresholding time: 0.26 ms
+Total Canny edge detection time: 2.07 ms
+CUDA Canny edge detection time: 2.07 ms
+Writing the edge iname in the file output/cuda_pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.12 ms
+Total execution time: 2.22 ms
+-------------------------------------------
+
+%%%%%% Algorithm: bin/canny_serial %%%%%%
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 1)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.04 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 7.49 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.38 ms
+Doing hysteresis thresholding.
+2051
+Hysteresis thresholding time: 0.31 ms
+Total Canny edge detection time: 8.48 ms
+Canny edge detection time: 8.49 ms
+Writing the edge iname in the file output/pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.10 ms
+Total execution time: 8.63 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 2)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 7.38 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.38 ms
+Doing hysteresis thresholding.
+2051
+Hysteresis thresholding time: 0.31 ms
+Total Canny edge detection time: 8.37 ms
+Canny edge detection time: 8.39 ms
+Writing the edge iname in the file output/pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.08 ms
+Total execution time: 8.50 ms
+-------------------------------------------
+
+&&&& Running on Image: pic_small.pgm &&&&
+
+Running with parameters: sigma=10, tlow=0.3, thigh=0.6 (Run 3)
+
+Reading the image input/pic_small.pgm.
+Image reading time: 0.03 ms
+Starting Canny edge detection.
+Smoothing the image using a gaussian kernel.
+-Computing the gaussian smoothing kernel.
+-Kernel of 51 elements created.
+-Bluring the image in the X-direction.
+-Bluring the image in the Y-direction.
+==================================
+Gaussian smoothing time: 7.35 ms
+==================================
+
+Computing the X and Y first derivatives.
+==================================
+X and Y derivatives computation time: 0.15 ms
+==================================
+
+Computing the magnitude of the gradient.
+==================================
+Gradient magnitude computation time: 0.16 ms
+==================================
+
+Doing the non-maximal suppression.
+Non-maximal suppression time: 0.38 ms
+Doing hysteresis thresholding.
+2051
+Hysteresis thresholding time: 0.31 ms
+Total Canny edge detection time: 8.34 ms
+Canny edge detection time: 8.36 ms
+Writing the edge iname in the file output/pic_small.pgm_s_10.00_l_0.30_h_0.60.pgm.
+Image writing time: 0.08 ms
+Total execution time: 8.47 ms
+-------------------------------------------
