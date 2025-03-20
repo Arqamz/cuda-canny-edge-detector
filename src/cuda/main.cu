@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "pgm_io.h"
 #include "cuda_canny_edge.cuh"
 
 void cuda_warmup() {

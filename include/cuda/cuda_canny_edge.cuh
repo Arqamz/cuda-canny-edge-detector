@@ -10,6 +10,7 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
+#include "timer.h"
 #include "hysteresis.h"
 
 #include "cuda_gaussian_smooth.cuh"

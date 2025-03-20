@@ -1,4 +1,4 @@
-#include "cuda_radian.cuh"
+#include "cuda_radian_direction.cuh"
 
 __global__ void compute_radian_direction_kernel(const short int* delta_x, const short int* delta_y, float* dir_radians, int rows, int cols) {
     int c = blockIdx.x * blockDim.x + threadIdx.x;
