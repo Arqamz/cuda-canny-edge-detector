@@ -13,6 +13,7 @@ extern "C" {
 #include "derivative.h"
 #include "radian_direction.h"
 #include "magnitude.h"
+#include "suppression.h"
 #include "hysteresis.h"
 
 #define VERBOSE 1

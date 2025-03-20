@@ -48,21 +48,6 @@ int follow_edges(unsigned char *edgemapptr, short *edgemagptr, short lowval, int
  *******************************************************************************/
 void apply_hysteresis(short int *mag, unsigned char *nms, int rows, int cols, float tlow, float thigh, unsigned char *edge);
 
-/*******************************************************************************
- * FUNCTION: non_max_supp
- * PURPOSE: This function applies non-maximal suppression to the magnitude of
- * the gradient image.
- * PARAMETERS:
- *   mag - Magnitude values
- *   gradx - X gradient values
- *   grady - Y gradient values
- *   nrows - Number of rows in the image
- *   ncols - Number of columns in the image
- *   result - Output result after non-maximal suppression
- * RETURN: int
- *******************************************************************************/
-int non_max_supp(short *mag, short *gradx, short *grady, int nrows, int ncols, unsigned char *result);
-
 #ifdef __cplusplus
 }
 #endif

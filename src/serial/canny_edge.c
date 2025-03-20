@@ -171,7 +171,9 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    end_time = get_time_ms();
    step_time = end_time - start_time;
    total_time += step_time;
+   printf("==================================\n");
    printf("Non-maximal suppression time: %.2f ms\n", step_time);
+   printf("==================================\n\n");
 
    /****************************************************************************
     * Use hysteresis to mark the edge pixels.
@@ -189,9 +191,12 @@ void canny(unsigned char *image, int rows, int cols, float sigma, float tlow, fl
    end_time = get_time_ms();
    step_time = end_time - start_time;
    total_time += step_time;
+   printf("==================================\n");
    printf("Hysteresis thresholding time: %.2f ms\n", step_time);
+   printf("==================================\n\n");
 
    // Print total time
+   printf("====================================================================\n");
    printf("Total Canny edge detection time: %.2f ms\n", total_time);
 
    /****************************************************************************
