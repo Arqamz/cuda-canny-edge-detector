@@ -98,11 +98,13 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
         fprintf(stderr, "Error allocating the nms image.\n");
         exit(1);
     }
-    non_max_supp(magnitude, delta_x, delta_y, rows, cols, nms);
+    cuda_non_max_supp(magnitude, delta_x, delta_y, rows, cols, nms);
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
+    printf("==================================\n");
     printf("Non-maximal suppression time: %.2f ms\n", step_time);
+    printf("==================================\n\n");
 
     /****************************************************************************
      * Use hysteresis to mark the edge pixels (CPU).
@@ -116,13 +118,16 @@ void cuda_canny(unsigned char *image, int rows, int cols, float sigma,
         fprintf(stderr, "Error allocating the edge image.\n");
         exit(1);
     }
-    apply_hysteresis(magnitude, nms, rows, cols, tlow, thigh, *edge);
+    cuda_apply_hysteresis(magnitude, nms, rows, cols, tlow, thigh, *edge);
     end_time = get_time_ms();
     step_time = end_time - start_time;
     total_time += step_time;
+    printf("==================================\n");
     printf("Hysteresis thresholding time: %.2f ms\n", step_time);
+    printf("==================================\n\n");
 
     // Print total time
+    printf("====================================================================\n");
     printf("Total Canny edge detection time: %.2f ms\n", total_time);
 
     /****************************************************************************
